@@ -1,0 +1,50 @@
+<html>
+
+<body>
+
+<script>
+
+//exercitiul 2: In fisierul proaspat creat, calculati aria unui cerc care are raza egala cu 10 cm.
+
+let raza = 10;
+
+const pi = 3.14;
+
+let arie_cerc = pi * raza ** 2;
+
+console.log("aria cercului cu raza de 10 cm este ", arie_cerc, " cm");
+
+//exercitiul 3: In acelasi fisier, creeaza un tablou care sa contina 5 titluri de film. 
+//Parcurge tabloul si afiseaza titlul filmului si pozitia sa din tablou.
+
+let filme = ["As Goog As It Gets", "Spider-Man", "The Good Wife", "The Joker", "The Incredibles"];
+
+for (i=0; i<=4; i++) {
+    console.log("Filmul de pe pozitia ", i, " din tablou este", filme[i]);
+}
+
+//exercitiul 4: Afiseza numarul minim si numarul maxim din urmatorul tablou [5, 3, "1", 7, "9", 30, "45", 7].
+
+let numere = [5, 3, "1", 7, "9", 30, "45", 7];
+
+let minim = 100;
+
+let maxim = 0;
+
+for (i=0; i<=7; i++) {
+    if (numere[i]<=minim) {
+        minim = numere[i];
+    }
+
+    if (numere[i]>=maxim) {
+        maxim = numere[i];
+    }
+}
+
+console.log("Numarul minim din tablou este ", minim, "si numarul maxim din tablou este", maxim);
+
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,240 @@
+<body>
+
+    <html>
+
+    <script>
+
+        // Exercitiul 1
+        // Folosind switch statement transformati urmatoarea suma din 749 RON in EUR, HUF, USD.
+
+        console.log('-------------- Exercitiul 1 --------------');
+
+        const suma = 749;
+
+        let moneda = ['EUR', 'HUF', 'USD'];
+
+        for (let i = 0; i < moneda.length; i++) {
+            switch (moneda[i]) {
+                case 'EUR':
+                    var sumaConvertita = Math.round((suma / 4.8286 + 0.00001) * 100) / 100;
+                    console.log('749 RON sunt echivalentul a', sumaConvertita, 'EUR');
+                    break;
+                case 'HUF':
+                    var sumaConvertita = Math.round((suma * 100 / 1.3246 + 0.00001) * 100) / 100;
+                    console.log('749 RON sunt echivalentul a', sumaConvertita, 'HUF');
+                    break;
+                case 'USD':
+                    var sumaConvertita = Math.round((suma / 4.4674 + 0.00001) * 100) / 100;
+                    console.log('749 RON sunt echivalentul a', sumaConvertita, 'USD');
+                    break;
+
+            }
+        }
+
+        // <!-- Exercitiul 2
+        // Scrieti o functie care primeste un parametru si returneaza tipul acestuia.
+        // Hint: Vezi https://js-documentation.herokuapp.com/ sectiunea Operators → Types.
+
+
+        console.log('-------------- Exercitiul 2 --------------');
+
+        function tipParametru(parametru) {
+            return typeof parametru;
+        }
+
+        const parametri = [0, "0", "Ana are mere", false, [1, 2, 3, 4], true, 234];
+
+        for (i = 0; i < parametri.length; i++) {
+            console.log('Tipul parametrului', parametri[i], 'este', tipParametru(parametri[i]));
+        }
+
+        console.log('-------------- Exercitiul 3 varianta 1 --------------');
+        // Exercitiul 3
+        // Scrieti o functie javascript care accepta ca parametru un string care ia fiecare cuvant in parte si ii extrage prima
+        // litera, dupa care concateneaza literele extrase
+
+        // "Universitatea Tehnica Cluj Napoca" => UTCN
+        // Se da array-ul urmator:
+
+        // const fraze = [
+        // "Quisque faucibus ipsum id nibh egestas bibendum.",
+        // "Phasellus tincidunt sapien nec est tempus lacinia.",
+        // "Curabitur ac elit at turpis ultrices hendrerit at et tellus.",
+        // "Praesent a magna a ligula gravida sodales eu ut erat.",
+        // "Ut eleifend velit vitae ipsum mattis viverra."
+        // ]
+        // Transformati fiecare valoare din array-ul de mai sus cu functia definita anterior
+
+        function prescurtare(parametruString) {
+            var cuvantPrescurtat = parametruString[0];
+            for (i = 0; i < parametruString.length; i++) {
+                if (parametruString[i] == ' ') {
+                    cuvantPrescurtat = cuvantPrescurtat + parametruString.charAt(i + 1);
+                }
+            }
+            return cuvantPrescurtat;
+        }
+
+        const fraze = [
+            "Quisque faucibus ipsum id nibh egestas bibendum.",
+            "Phasellus tincidunt sapien nec est tempus lacinia.",
+            "Curabitur ac elit at turpis ultrices hendrerit at et tellus.",
+            "Praesent a magna a ligula gravida sodales eu ut erat.",
+            "Ut eleifend velit vitae ipsum mattis viverra."];
+
+        for (j = 0; j < fraze.length; j++) {
+            console.log(prescurtare(fraze[j]));
+
+        }
+
+
+        // Exercitiul 4
+        // Declarati o clasa Shape care sa contina urmatoarele proprietati si metode
+        // Proprietati:
+
+        // culoare
+        // array care sa contina laturile (eg [4,3,5])
+        // Metode:
+
+        // perimetru
+        // semiperimetru
+        // tipul poigonului
+        // trighiuni 3 laturi,
+        // patrulater 4 laturi
+        // pentagon 5 laturi
+        // hexagon 6 laturi
+        // daca contine mai multe sau mai putine laturi, WORK IN PROGRESS
+        // Creati o instanta si afisati:
+
+        // tipul poligonului
+        // culoarea
+        // perimetru
+        // semiperimetru
+
+        console.log('-------------- Exercitiul 4 --------------');
+
+        let perimetru;
+
+        let semiperimetru;
+
+        class Shape {
+            constructor(culoare, laturi) {
+                this.culoare = culoare;
+                this.laturi = laturi;
+            }
+
+            metodaPerimetru() {
+                let perimetru = 0;
+                for (i = 0; i < this.laturi.length; i++) {
+                    perimetru = perimetru + this.laturi[i];
+                }
+                return perimetru;
+            }
+
+            metodaSemiperimetru() {
+                let semiperimetru = this.metodaPerimetru() / 2;
+                return semiperimetru;
+            }
+
+            metodaTip() {
+                let mesaj = '';
+                switch (this.laturi.length) {
+                    case 1:
+                        mesaj = 'WORK IN PROGRESS';
+                        break;
+                    case 2:
+                        mesaj = 'WORK IN PROGRESS';
+                        break;
+                    case 3:
+                        mesaj = 'triunghi';
+                        break;
+                    case 4:
+                        mesaj = 'patrulater 4 laturi';
+                        break;
+                    case 5:
+                        mesaj = 'pentagon 5 laturi';
+                        break;
+                    case 6:
+                        mesaj = 'hexagon 6 laturi';
+                        break;
+                    default:
+                        mesaj = 'WORK IN PROGRESS';
+
+                }
+                return mesaj;
+            }
+        }
+
+        const forma1 = new Shape('rosu', [2, 3, 4]);
+
+        const forma2 = new Shape('galben', [4, 2, 4, 2]);
+
+        console.log(forma1.metodaTip());
+        console.log(forma1.culoare);
+        console.log('Perimetrul:', forma1.metodaPerimetru());
+        console.log('Semiperimetrul:', forma1.metodaSemiperimetru());
+        // console.log('Forma este', forma2.metodaTip(), ', are culoarea', forma2.culoare, ', perimetrul de ', forma2.metodaPerimetru(), ' si semiperimetrul de', forma2.metodaSemiperimetru());
+
+        console.log('-------------- Exercitiul 5 --------------');
+
+        //         Exercitiul 5
+        // Creati doua clase care pot extinde clasa Shape, in template-ul acestor clase, implementati metoda aria.
+        // Creati doua instante si afisati:
+
+        // tipul poligonului
+        // perimetrul
+        // semiperimetrul
+        // aria
+        // culoarea
+        // Adaugati rezolvarea temei pe GIT. -->
+
+        class NewShape extends Shape {
+            constructor(culoare, laturi) {
+                super(culoare, laturi);
+            }
+
+            metodaArie() {
+                let arie;
+                let sp = this.metodaSemiperimetru();
+                switch (this.laturi.length) {
+                    case 3:
+                        arie = Math.sqrt(sp * (sp - this.laturi[0]) * (sp - this.laturi[1]) * (sp - this.laturi[2]));
+                        break;
+                    case 4:
+                        arie = ((this.laturi[0] + this.laturi[2]) / 2) * ((this.laturi[1] + this.laturi[3]) / 2);
+                        break;
+                    case 5:
+                        arie = 'arie pentagon 5 laturi';
+                        break;
+                    case 6:
+                        arie = 'arie hexagon 6 laturi';
+                        break;
+                    default:
+                        arie = 'Nu se poate calcula';
+                }
+                return arie;
+            }
+
+        }
+
+        const forma3 = new NewShape('verde', [3, 4, 3, 4]);
+
+        const forma4 = new NewShape('albastru', [4, 4, 4, 4, 4]);
+
+        console.log(forma3.metodaTip());
+        console.log('Perimetrul:', forma3.metodaPerimetru());
+        console.log('Semiperimetrul:', forma3.metodaSemiperimetru());
+        console.log('Arie:', forma3.metodaArie());
+        console.log(forma3.culoare);
+        console.log('----------------------------');
+        console.log(forma4.metodaTip());
+        console.log('Perimetrul:', forma4.metodaPerimetru());
+        console.log('Semiperimetrul:', forma4.metodaSemiperimetru());
+        console.log('Arie:', forma4.metodaArie());
+        console.log(forma4.culoare);
+
+    </script>
+
+    </html>
+
+</body>
